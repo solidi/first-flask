@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
+from flask_marshmallow import Marshmallow
+
 
 users = [
     {
@@ -73,6 +75,7 @@ class User(Resource):
 
 
 app = Flask(__name__)
+ma = Marshmallow(app)
 api = Api(app)
 api.add_resource(User, "/user/<string:name>")
 app.run(debug=True)
